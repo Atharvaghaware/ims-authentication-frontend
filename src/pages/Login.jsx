@@ -35,11 +35,15 @@ function Login() {
         navigate("/dashboard");
 
     } catch (error) {
-    const message = error.response?.data || "Login Failed";
-    alert(message);
-}
+        console.error(error);
 
-}
+        alert(
+            error.response?.data?.message ||
+            error.response?.data ||
+            error.message
+        );
+    }
+
     return (
 
         <div className="container mt-5">
@@ -94,6 +98,7 @@ function Login() {
 
     );
 
+}
 }
 
 export default Login;

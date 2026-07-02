@@ -33,12 +33,14 @@ function Register() {
             navigate("/");
 
         } catch (error) {
+    console.error("Registration Error:", error);
 
-            console.error("Registration Error:", error);
-
-            alert("Registration Failed");
-
-        }
+    alert(
+        error.response?.data?.message ||
+        error.response?.data ||
+        error.message
+    );
+}
 
     };
 
