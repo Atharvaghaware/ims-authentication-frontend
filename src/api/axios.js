@@ -1,10 +1,3 @@
-import axios from "axios";
-
 const api = axios.create({
-    baseURL: "http://localhost:8081/api/auth",
-    headers: {
-        "Content-Type": "application/json",
-    },
+  baseURL: "https://ims-authentication-backend-2.onrender.com/api",
 });
-
-export default api;
