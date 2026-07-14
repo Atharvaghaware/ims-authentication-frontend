@@ -41,7 +41,7 @@ function ForgotPassword() {
 
   return (
 
-    <div className="min-h-screen bg-linear-to-br from-indigo-700 via-blue-600 to-cyan-500 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500 flex items-center justify-center px-6">
 
       <div className="grid lg:grid-cols-2 bg-white rounded-3xl shadow-2xl overflow-hidden max-w-6xl w-full">
 
