@@ -21,25 +21,25 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await api.post("/login", login);
+  try {
+    const response = await api.post("/login", login);
 
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("fullName", response.data.fullName);
-      localStorage.setItem("role", response.data.role);
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("fullName", response.data.fullName);
+    localStorage.setItem("role", response.data.role);
 
-      navigate("/dashboard");
-    } catch (error) {
-      alert(
-        error.response?.data?.message ||
-          error.response?.data ||
-          "Invalid Email or Password"
-      );
-    }
-  };
+    navigate("/dashboard");
 
+  } catch (error) {
+    alert(
+      error.response?.data?.message ||
+      error.response?.data ||
+      "Invalid Email or Password"
+    );
+  }
+};
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500 flex items-center justify-center px-6">
 
