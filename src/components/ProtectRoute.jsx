@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import { Link, useNavigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
-import ProtectedRoute from "./components/ProtectedRoute";
 
 
 function App() {
@@ -28,11 +27,7 @@ function App() {
 
                 <Route path="/register" element={<Register />} />
 
-                <Route path="/dashboard" element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
-                } />
+                <Route path="/dashboard" element={<Dashboard />} />
 
                 <Route path="*" element={<Navigate to="/login" replace />} />
                 

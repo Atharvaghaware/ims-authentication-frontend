@@ -1,16 +1,21 @@
+import { useNavigate } from "react-router-dom";
+
 function Dashboard() {
 
-    const token = localStorage.getItem("token");
-const fullName = localStorage.getItem("fullName");
-const role = localStorage.getItem("role");
+    const navigate = useNavigate();
+
+    const fullName = localStorage.getItem("fullName");
+    const role = localStorage.getItem("role");
 
     const logout = () => {
 
-        localStorage.clear();
+        localStorage.removeItem("token");
+        localStorage.removeItem("fullName");
+        localStorage.removeItem("role");
 
-        window.location.href = "/";
+        navigate("/login");
 
-    }
+    };
 
     return (
 
@@ -36,7 +41,7 @@ const role = localStorage.getItem("role");
 
         </div>
 
-    )
+    );
 
 }
 
