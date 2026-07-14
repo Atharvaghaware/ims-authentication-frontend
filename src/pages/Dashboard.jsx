@@ -21,20 +21,23 @@ function Dashboard() {
 
         <div className="container mt-5">
 
-            <div className="card p-5">
+            <div className="card shadow p-5">
 
-                <h1>Welcome</h1>
+                <h1 className="text-success">
+                    Welcome
+                </h1>
 
-                <h2>{fullName}</h2>
+                <hr />
 
-                <h3>{role}</h3>
+                <h4>Name : {fullName}</h4>
+
+                <h5>Role : {role}</h5>
 
                 <button
-                    className="btn btn-danger mt-3"
-                    onClick={logout}>
-
+                    className="btn btn-danger mt-4"
+                    onClick={logout}
+                >
                     Logout
-
                 </button>
 
             </div>

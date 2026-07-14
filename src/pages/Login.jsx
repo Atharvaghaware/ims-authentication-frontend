@@ -18,87 +18,109 @@ function Login() {
         });
     };
 
-   const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    try {
+        try {
 
-        const response = await api.post("/login", login);
+            const response = await api.post("/login", login);
 
-        console.log(response.data);
+            console.log(response.data);
 
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("fullName", response.data.fullName);
-        localStorage.setItem("role", response.data.role);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("fullName", response.data.fullName);
+            localStorage.setItem("role", response.data.role);
 
-        navigate("/dashboard");
+            alert("Login Successful");
 
-    } catch (error) {
-        console.error(error);
+            navigate("/dashboard");
 
-        alert(
-            error.response?.data?.message ||
-            error.response?.data ||
-            error.message
-        );
-    }
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                error.response?.data?.message ||
+                error.response?.data ||
+                "Invalid Email or Password"
+            );
+
+        }
+
+    };
 
     return (
 
         <div className="container mt-5">
 
-            <div className="card p-4 col-md-6 mx-auto">
+            <div className="row justify-content-center">
 
-                <h2 className="text-center mb-4">
-                    Login
-                </h2>
+                <div className="col-md-5">
 
-                <form onSubmit={handleSubmit}>
+                    <div className="card shadow p-4">
 
-                    <input
-                        className="form-control mb-3"
-                        placeholder="Email"
-                        name="email"
-                        onChange={handleChange}
-                    />
+                        <h2 className="text-center mb-4">
+                            Login
+                        </h2>
 
-                    <input
-                        type="password"
-                        className="form-control mb-3"
-                        placeholder="Password"
-                        name="password"
-                        onChange={handleChange}
-                    />
+                        <form onSubmit={handleSubmit}>
 
-                    <button className="btn btn-success w-100">
-                        Login
-                    </button>
+                            <input
+                                type="email"
+                                className="form-control mb-3"
+                                placeholder="Email"
+                                name="email"
+                                value={login.email}
+                                onChange={handleChange}
+                                required
+                            />
 
-                </form>
+                            <input
+                                type="password"
+                                className="form-control mb-3"
+                                placeholder="Password"
+                                name="password"
+                                value={login.password}
+                                onChange={handleChange}
+                                required
+                            />
 
-                <Link
-                    className="mt-3 text-center"
-                    to="/register">
+                            <button
+                                type="submit"
+                                className="btn btn-success w-100"
+                            >
+                                Login
+                            </button>
 
-                    Create New Account
+                        </form>
 
-                </Link>
-                <div className="text-center mt-3">
+                        <div className="text-center mt-3">
 
-                <Link to="/forgot-password">
-                        Forgot Password?
-                </Link>
+                            <Link to="/forgot-password">
+                                Forgot Password?
+                            </Link>
 
-        </div>
+                        </div>
 
-         </div>
+                        <div className="text-center mt-2">
+
+                            <Link to="/register">
+                                Create New Account
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     );
 
-}
 }
 
 export default Login;
